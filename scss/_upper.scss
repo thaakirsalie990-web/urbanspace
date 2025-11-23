@@ -1,0 +1,377 @@
+// =====================
+// Variables
+// =====================
+
+// Colors
+$color-bg: #0b0b0b;
+$color-bg-secondary: #111111;
+$color-primary: #fff;
+$color-accent: #c5a47e; // Gold/Beige tone from image
+$color-text: #a6a6a6;
+$color-overlay: rgba(0, 0, 0, 0.6);
+
+// Spacing
+$space-1: 0.5rem;
+$space-2: 1rem;
+$space-3: 1.5rem;
+$space-4: 2rem;
+$space-5: 3rem;
+$space-6: 5rem;
+
+// Typography
+$font-heading: 'Montserrat', sans-serif;
+$font-body: 'Lato', sans-serif;
+
+$font-xs: 0.75rem;
+$font-sm: 0.875rem;
+$font-base: 1rem;
+$font-lg: 1.25rem;
+$font-xl: 1.5rem;
+$font-2xl: 2rem;
+$font-3xl: 3rem;
+$font-huge: 8rem;
+
+// Breakpoints
+$break-md: 768px;
+$break-lg: 1024px;
+$break-xl: 1200px;
+
+// =====================
+// Reset & Base
+// =====================
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: $color-bg;
+    color: $color-text;
+    font-family: $font-body;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+    font-family: $font-heading;
+    color: $color-primary;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $space-3;
+}
+
+.section-padding {
+    padding: $space-5 0;
+    
+    @media (min-width: $break-lg) {
+        padding: $space-6 0;
+    }
+}
+
+.watermark {
+    position: absolute;
+    font-size: $font-huge;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    text-transform: lowercase;
+    z-index: -1;
+    pointer-events: none;
+    font-family: $font-heading;
+    
+    &--right {
+        right: 0;
+        top: 20%;
+    }
+
+    &--bottom {
+        right: 0;
+        bottom: 20%;
+        font-size: 6rem;
+    }
+}
+
+.center-btn {
+    text-align: center;
+    margin-top: $space-5;
+}
+
+// =====================
+// Components
+// =====================
+
+// Buttons
+.btn {
+    display: inline-block;
+    padding: $space-2 $space-4;
+    font-size: $font-xs;
+    letter-spacing: 2px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+
+    &--primary {
+        background-color: rgba(255,255,255,0.2);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255,255,255,0.3);
+        color: $color-primary;
+        
+        &:hover {
+            background-color: $color-primary;
+            color: $color-bg;
+        }
+    }
+
+    &--outline {
+        background: transparent;
+        border: 1px solid $color-text;
+        color: $color-primary;
+        
+        &:hover {
+            border-color: $color-primary;
+            background: rgba(255,255,255,0.1);
+        }
+    }
+
+    &--outline-round {
+        background: transparent;
+        border: 1px solid $color-text;
+        border-radius: 50px;
+        padding: $space-1 $space-4;
+        font-size: $font-xs;
+        
+        &:hover {
+            border-color: $color-primary;
+            background: $color-primary;
+            color: $color-bg;
+        }
+    }
+}
+
+// Section Titles
+.section-header {
+    text-align: center;
+    margin-bottom: $space-5;
+}
+
+.section-title {
+    font-size: $font-sm;
+    font-weight: 400;
+    letter-spacing: 4px;
+    position: relative;
+    display: inline-block;
+    color: $color-text; 
+}
+
+// =====================
+// Header
+// =====================
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: $space-3 0;
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__logo {
+        font-family: $font-heading;
+        color: $color-primary;
+        font-size: $font-lg;
+        letter-spacing: 1px;
+        display: flex;
+        align-items: center;
+        gap: $space-1;
+    }
+
+    &__hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        
+        span {
+            width: 25px;
+            height: 2px;
+            background: $color-primary;
+            transition: 0.3s;
+        }
+
+        @media (min-width: $break-lg) {
+            display: none;
+        }
+    }
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: #000;
+    padding: $space-5;
+    transition: 0.4s ease;
+
+    &--active {
+        right: 0;
+        top: 0;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: $space-4;
+        margin-top: $space-5;
+    }
+
+    &__link {
+        color: $color-text;
+        font-size: $font-base;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: $font-xs;
+
+        &:hover {
+            color: $color-primary;
+        }
+    }
+
+    @media (min-width: $break-lg) {
+        position: static;
+        width: auto;
+        height: auto;
+        background: transparent;
+        padding: 0;
+
+        &__list {
+            flex-direction: row;
+            margin-top: 0;
+            gap: $space-5;
+        }
+    }
+}
+
+// =====================
+// Hero
+// =====================
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    &__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        // Placeholder for the Luxury Villa image
+        background: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+        filter: brightness(0.7);
+        z-index: -1;
+    }
+
+    &__container {
+        position: relative;
+        width: 100%;
+    }
+
+    &__content {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+        
+        @media (min-width: $break-lg) {
+            text-align: right; 
+            margin-right: 0;
+        }
+    }
+
+    &__subtitle {
+        color: $color-primary;
+        font-family: $font-heading;
+        font-size: $font-base;
+        margin-bottom: $space-2;
+    }
+
+    &__title {
+        font-size: $font-2xl;
+        font-weight: 700;
+        margin-bottom: $space-4;
+        line-height: 1.2;
+
+        @media (min-width: $break-lg) {
+            font-size: $font-3xl;
+        }
+    }
+
+    // Sidebar Socials
+    &__socials {
+        display: none; 
+
+        @media (min-width: $break-lg) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            left: $space-4;
+            top: 50%;
+            transform: translateY(-50%);
+            gap: $space-3;
+            z-index: 10;
+            
+            a {
+                color: $color-primary;
+                font-size: $font-sm;
+                opacity: 0.7;
+                &:hover { opacity: 1; }
+            }
+        }
+    }
+
+    &__social-text {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        color: $color-primary;
+        font-size: $font-xs;
+        letter-spacing: 3px;
+        margin-bottom: $space-2;
+        opacity: 0.7;
+    }
+}

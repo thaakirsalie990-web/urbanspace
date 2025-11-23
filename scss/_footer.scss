@@ -1,0 +1,226 @@
+// =====================
+// Variables
+// =====================
+
+// Colors
+$color-bg: #0b0b0b;
+$color-bg-secondary: #111111;
+$color-primary: #fff;
+$color-accent: #c5a47e; // Gold/Beige tone from image
+$color-text: #a6a6a6;
+$color-overlay: rgba(0, 0, 0, 0.6);
+
+// Spacing
+$space-1: 0.5rem;
+$space-2: 1rem;
+$space-3: 1.5rem;
+$space-4: 2rem;
+$space-5: 3rem;
+$space-6: 5rem;
+
+// Typography
+$font-heading: 'Montserrat', sans-serif;
+$font-body: 'Lato', sans-serif;
+
+$font-xs: 0.75rem;
+$font-sm: 0.875rem;
+$font-base: 1rem;
+$font-lg: 1.25rem;
+$font-xl: 1.5rem;
+$font-2xl: 2rem;
+$font-3xl: 3rem;
+$font-huge: 8rem;
+
+// Breakpoints
+$break-md: 768px;
+$break-lg: 1024px;
+$break-xl: 1200px;
+
+// =====================
+// Standard Footer Styling
+// =====================
+.footer {
+    background-color: #050505; // Deep black
+    padding-top: $space-6;
+    padding-bottom: $space-4;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: $font-sm;
+    color: #888;
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $space-5;
+        margin-bottom: $space-6;
+
+        // Tablet: 2x2 Grid
+        @media (min-width: $break-md) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        // Desktop: 4 Columns (Brand is wider)
+        @media (min-width: $break-lg) {
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            gap: $space-6;
+        }
+    }
+
+    // --- Column Styles ---
+    &__col {
+        display: flex;
+        flex-direction: column;
+        gap: $space-3;
+    }
+
+    &__logo {
+        font-family: $font-heading;
+        color: $color-primary;
+        font-size: $font-lg;
+        letter-spacing: 1px;
+        margin-bottom: $space-1;
+        
+        i { color: $color-primary; }
+    }
+
+    &__desc {
+        line-height: 1.8;
+        font-size: 0.85rem;
+        max-width: 300px;
+    }
+
+    &__heading {
+        color: $color-primary;
+        font-size: $font-base;
+        font-weight: 600;
+        margin-bottom: $space-2;
+        letter-spacing: 1px;
+    }
+
+    // --- Links ---
+    &__links {
+        li {
+            margin-bottom: $space-2;
+        }
+
+        a {
+            color: #888;
+            transition: 0.3s;
+            font-size: 0.9rem;
+
+            &:hover {
+                color: $color-primary;
+                padding-left: 5px; // Subtle movement effect
+            }
+        }
+    }
+
+    // --- Social Icons ---
+    &__socials {
+        display: flex;
+        gap: $space-3;
+        margin-top: $space-2;
+
+        .social-link {
+            width: 35px;
+            height: 35px;
+            border: 1px solid #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $color-primary;
+            transition: 0.3s;
+
+            &:hover {
+                background: $color-primary;
+                color: #000;
+                border-color: $color-primary;
+            }
+        }
+    }
+
+    // --- Newsletter Form ---
+    &__newsletter {
+        position: relative;
+        margin-top: $space-2;
+        border-bottom: 1px solid #333;
+
+        input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            padding: $space-2 40px $space-2 0;
+            color: $color-primary;
+            outline: none;
+
+            &::placeholder {
+                color: #555;
+            }
+        }
+
+        button {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: $color-primary;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.3s;
+
+            &:hover {
+                color: $color-accent; // Use the gold/beige variable
+            }
+        }
+    }
+
+    &__contact-info {
+        margin-top: $space-3;
+        font-size: 0.85rem;
+        
+        p {
+            margin-bottom: $space-1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            
+            i { color: $color-primary; }
+        }
+    }
+
+    // --- Bottom Bar ---
+    &__bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: $space-4;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $space-2;
+        text-align: center;
+
+        @media (min-width: $break-md) {
+            flex-direction: row;
+            justify-content: space-between;
+            text-align: left;
+        }
+    }
+
+    &__copyright {
+        font-size: 0.75rem;
+        opacity: 0.6;
+    }
+
+    &__legal {
+        display: flex;
+        gap: $space-4;
+
+        a {
+            font-size: 0.75rem;
+            color: #666;
+            
+            &:hover { color: $color-primary; }
+        }
+    }
+}
